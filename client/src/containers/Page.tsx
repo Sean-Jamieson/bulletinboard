@@ -2,7 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import { PostIt } from "../components/PostIt";
-import { CenterPost } from "../components/CenterPost";
+import { CenterPost } from "./CenterPost";
 
 export function Page() {
   return (
@@ -22,7 +22,6 @@ export function Page() {
           </>
         </Sidebar>
         <CenterPost />
-        <Box w="65rem">hello world</Box>
       </Flex>
     </Flex>
   );
