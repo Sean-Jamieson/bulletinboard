@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
