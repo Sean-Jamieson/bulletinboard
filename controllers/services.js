@@ -4,7 +4,7 @@ const ServiceMessage = require('../models/serviceMessage');
 const getService = async (req, res) => {
     const id = req.params.id;
     try {
-        const service = await ServiceMessage.find(ObjectID(id));
+        const service = await ServiceMessage.findById(id);
         res.status(200).json(service);   
     } catch (error) {
         res.status(404).json({ message: error.message });
