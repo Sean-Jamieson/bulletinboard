@@ -46,3 +46,5 @@ Take a step outside of your norm, gain experiences, connect with others, and sta
 - [@keithradford](https://www.github.com/keithradford)
 - [@seanJamieson](https://www.github.com/seanJamieson)
 - [@Kaleb-Chisholm](https://www.github.com/Kaleb-Chisholm)
+
+<sub>[1] <a href="https://www.flaticon.com/free-icons/bird" title="bird icons">Bird icon created by deemakdaksina - Flaticon</a></sub>
