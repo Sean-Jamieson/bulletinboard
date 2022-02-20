@@ -18,7 +18,7 @@ export function Filters() {
   const handleToggle = () => setShow(!show);
 
   return (
-    <Box w="100%" bgColor="filters" top="0" m="0" boxShadow="md" zIndex={10}>
+    <Box w="100%" bgColor="filtersbg" top="0" m="0" boxShadow="md" zIndex={10}>
       <HStack w="100%" justifyContent="space-between" p={3}>
         <Text color="white" fontSize="19px">
           Filters
@@ -32,7 +32,7 @@ export function Filters() {
         />
       </HStack>
       <Collapse in={show}>
-        <Flex py={2} wrap="wrap" justifyContent="space-evenly">
+        <Flex py={2} wrap="wrap" m="2px" justifyContent="space-evenly">
           {Array.from({ length: 13 }, () => (
             <Tag mb="2" bgColor="tag" color="white">
               <TagLabel>Hello</TagLabel>

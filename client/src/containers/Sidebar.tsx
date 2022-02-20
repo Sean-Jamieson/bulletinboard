@@ -8,7 +8,7 @@ export function Sidebar({ children }: { children: JSX.Element }) {
       maxW="288px"
       direction="column"
       h="100%"
-      bgColor="whitesmoke"
+      bgColor="sidebarbg"
     >
       <Filters />
       <VStack
@@ -18,6 +18,7 @@ export function Sidebar({ children }: { children: JSX.Element }) {
         overflowX="hidden"
         overflowY="auto"
         direction="column"
+        py={2}
       >
         {children}
       </VStack>

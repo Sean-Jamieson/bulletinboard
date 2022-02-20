@@ -1,17 +1,21 @@
-import { Icon, Table, Tbody, Td, Tr, VStack } from "@chakra-ui/react";
 import {
-  MdAccessTime,
-  MdOutlineDateRange,
-  MdOutlineLocationOn,
-} from "react-icons/md";
+  Center,
+  Icon,
+  Table,
+  Tag,
+  Tbody,
+  Td,
+  Tr,
+  VStack,
+} from "@chakra-ui/react";
+import { MdAccessTime, MdOutlineDateRange } from "react-icons/md";
 
 type Props = {
-  date: string | JSX.Element;
-  time: string | JSX.Element;
-  location: string | JSX.Element;
+  date: string;
+  type: string;
 };
 
-export function Info({ date, time, location }: Props) {
+export function Info({ date, type }: Props) {
   return (
     <VStack>
       <Table variant="simple" colorScheme="blackAlpha">
@@ -20,22 +24,21 @@ export function Info({ date, time, location }: Props) {
             <Td p={0}>
               <Icon as={MdOutlineDateRange} fontSize="25px" />
             </Td>
-            <Td py={0.3}>{date}</Td>
+            <Td py={0.3}>{new Date(date).toDateString()}</Td>
           </Tr>
           <Tr>
             <Td p={0} fontSize="25px">
               <Icon as={MdAccessTime} />
             </Td>
-            <Td py={0.3}>{time}</Td>
-          </Tr>
-          <Tr>
-            <Td p={0} fontSize="25px">
-              <Icon as={MdOutlineLocationOn} />
-            </Td>
-            <Td py={0.3}>{location}</Td>
+            <Td pt={0.3}>{new Date(date).toTimeString()}</Td>
           </Tr>
         </Tbody>
       </Table>
+      <Center w="100%" h="100%" pt="2">
+        <Tag mb="2" bgColor="tag" color="white">
+          {type}
+        </Tag>
+      </Center>
     </VStack>
   );
 }

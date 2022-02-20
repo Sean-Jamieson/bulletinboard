@@ -9,7 +9,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 
-export default function User() {
+export default function User({ email }: { email: string }) {
   const [isMobile] = useMediaQuery("(max-width: 1300px)");
   return (
     <VStack spacing={3}>
@@ -28,8 +28,14 @@ export default function User() {
           </Text>
         </Center>
       )}
-      <Button colorScheme="cyan" rightIcon={<EmailIcon />}>
-        Email User
+      <Button
+        bgColor="tag"
+        color="white"
+        colorScheme="blackAlpha"
+        rightIcon={<EmailIcon />}
+        onClick={() => (window.location.href = `mailto:${email}`)}
+      >
+        Contact me
       </Button>
     </VStack>
   );
