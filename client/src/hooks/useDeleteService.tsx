@@ -1,22 +1,8 @@
 import { useCallback, useState } from "react";
 import { deleteData } from "../api/asyncFunctions";
+import { UserEvent } from "./useGetEvents";
 
-// Event data type
-export type UserService = {
-  organizer: string;
-  description: string;
-  title: string;
-  type: string;
-  lat: number;
-  lng: number;
-  date: string;
-  rating: number;
-  pictures: string[];
-};
-
-type Result =
-  | { status: "loaded"; service: UserService }
-  | { status: "loading" };
+type Result = { status: "loaded"; service: UserEvent } | { status: "loading" };
 
 export function useDeleteEvent(): [(id: string) => Promise<void>, Result] {
   const [result, setResult] = useState<Result>({ status: "loading" });

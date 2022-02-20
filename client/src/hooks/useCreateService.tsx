@@ -1,29 +1,24 @@
 import { useCallback, useState } from "react";
 import { postData } from "../api/asyncFunctions";
+import { UserEvent } from "./useGetEvents";
 
-// Event data type
-export type UserService = {
-  organizer: string;
-  description: string;
+type Result = { status: "loaded"; service: UserEvent } | { status: "loading" };
+
+export type CreateInput = {
   title: string;
   type: string;
-  lat: number;
+  date: Date;
   lng: number;
-  date: string;
-  rating: number;
+  lat: number;
+  organizer: string;
+  description: string;
   pictures: string[];
 };
 
-type Result =
-  | { status: "loaded"; service: UserService }
-  | { status: "loading" };
-
-export function useCreateService(
-  id: string
-): [(data: UserService) => void, Result] {
+export function useCreateService(): [(data: CreateInput) => void, Result] {
   const [result, setResult] = useState<Result>({ status: "loading" });
 
-  const createService = useCallback(async (data: UserService) => {
+  const createService = useCallback(async (data: CreateInput) => {
     const service = await postData("services/create", data);
     setResult({ status: "loaded", service });
   }, []);

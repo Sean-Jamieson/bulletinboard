@@ -47,6 +47,7 @@ export const SelectMap = ({
     setZoom(m.getZoom()!);
     setCenter(m.getCenter()!.toJSON());
   };
+
   // [END maps_react_map_component_app_state]
 
   // [START maps_react_map_component_app_return]

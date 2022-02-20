@@ -9,14 +9,14 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  LinkBox,
 } from "@chakra-ui/react";
-import { useMatch, useNavigate, useParams } from "react-router-dom";
+import { useMatch, useNavigate, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export function Header() {
   const navigate = useNavigate();
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-  const { slug } = useParams();
 
   const eventsMatch = useMatch("/events/*");
   const servicesMatch = useMatch("/services/*");
@@ -32,29 +32,31 @@ export function Header() {
       minH="65px"
     >
       <HStack justifyContent="space-between" w="100%">
-        <Image
-          src={"/images/bltnbrdlogo.png"}
-          alt="Bulletin Board"
-          maxH="45px"
-          minH="45px"
-          minW="12em"
-          color="transparent"
-          loading="lazy"
-          ml="14"
-        />
+        <LinkBox as={Link} to="/" tabIndex={0}>
+          <Image
+            src={"/images/bltnbrdlogo.png"}
+            alt="Bulletin Board"
+            maxH="45px"
+            minH="45px"
+            minW="12em"
+            color="transparent"
+            loading="lazy"
+            ml="14"
+          />
+        </LinkBox>
         <HStack pr={3} spacing={4}>
           <ButtonGroup isAttached colorScheme="whiteAlpha">
             <Button
               color="black"
               isActive={eventsMatch ? true : false}
-              onClick={() => navigate(`/events/${slug ?? ""}`)}
+              onClick={() => navigate(`/events`)}
             >
               Events
             </Button>
             <Button
               color="black"
               isActive={servicesMatch ? true : false}
-              onClick={() => navigate(`/services/${slug ?? ""}`)}
+              onClick={() => navigate(`/services`)}
             >
               Services
             </Button>

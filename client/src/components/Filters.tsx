@@ -8,19 +8,36 @@ import {
   TagLabel,
   TagRightIcon,
   Text,
+  Button,
+  Center,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-export function Filters() {
+export function Filters({
+  handleSelected,
+}: {
+  handleSelected: (type: string) => void;
+}) {
   const [show, setShow] = useState(false);
-
+  const types: string[] = [
+    "Fitness",
+    "Night Life",
+    "Cultural Food",
+    "Nature Experiences",
+    "Workshops and Self Improvement",
+    "Gardening and Plants",
+    "Group Talk and Conversations",
+    "Children",
+    "Family",
+    "Sports and Games",
+  ];
   const handleToggle = () => setShow(!show);
 
   return (
     <Box w="100%" bgColor="filtersbg" top="0" m="0" boxShadow="md" zIndex={10}>
       <HStack w="100%" justifyContent="space-between" p={3}>
-        <Text color="white" fontSize="19px">
+        <Text color="black" fontSize="19px">
           Filters
         </Text>
         <IconButton
@@ -32,10 +49,20 @@ export function Filters() {
         />
       </HStack>
       <Collapse in={show}>
+        <Center>
+          <Button
+            ml="15px"
+            bgColor="resetDelBg"
+            _hover={{ bgColor: "resetHover" }}
+            size="sm"
+          >
+            Reset filters
+          </Button>
+        </Center>
         <Flex py={2} wrap="wrap" m="2px" justifyContent="space-evenly">
-          {Array.from({ length: 13 }, () => (
+          {types.map((type) => (
             <Tag mb="2" bgColor="tag" color="white">
-              <TagLabel>Hello</TagLabel>
+              <TagLabel>{type}</TagLabel>
               <TagRightIcon />
             </Tag>
           ))}

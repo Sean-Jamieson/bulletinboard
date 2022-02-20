@@ -24,12 +24,12 @@ code {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #8778e6;
+  background: #69776b;
   border: 2pt solid black;
   border-radius: 10pt;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #a497f7;
+  background: #849186;
 }

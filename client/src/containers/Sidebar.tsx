@@ -1,7 +1,13 @@
 import { Flex, VStack } from "@chakra-ui/react";
 import { Filters } from "../components/Filters";
 
-export function Sidebar({ children }: { children: JSX.Element }) {
+export function Sidebar({
+  children,
+  handleSelected,
+}: {
+  children: JSX.Element;
+  handleSelected: (type: string) => void;
+}) {
   return (
     <Flex
       minW="288px"
@@ -10,7 +16,7 @@ export function Sidebar({ children }: { children: JSX.Element }) {
       h="100%"
       bgColor="sidebarbg"
     >
-      <Filters />
+      <Filters handleSelected={handleSelected} />
       <VStack
         justifyContent="flex-start"
         height="100%"

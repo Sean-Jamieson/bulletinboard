@@ -6,6 +6,7 @@ export type User = {
   email: string;
   id: string;
   username: string;
+  picture: string;
 };
 
 type Result = { status: "loaded"; user: User } | { status: "loading" };

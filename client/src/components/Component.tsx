@@ -1,5 +1,6 @@
 import { Box, Button, Center, Heading, HStack, VStack } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDeleteEvent } from "../hooks/useDeleteEvent";
 
 type Props = {
@@ -15,10 +16,15 @@ export function Component({
   id,
 }: PropsWithChildren<Props>) {
   const [deleteEvent] = useDeleteEvent();
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     if (!id) return;
     deleteEvent(id);
+    navigate("/");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
   return (
     <VStack spacing={0} h="fit-content" w="100%">
@@ -33,7 +39,12 @@ export function Component({
         <HStack justifyContent="space-between" w={canDelete ? "100%" : ""}>
           <Heading size="md">{title}</Heading>
           {canDelete && (
-            <Button size="sm" colorScheme="red" onClick={handleDelete}>
+            <Button
+              size="sm"
+              bgColor="resetDelBg"
+              _hover={{ colorBg: "resetHover" }}
+              onClick={handleDelete}
+            >
               Delete
             </Button>
           )}

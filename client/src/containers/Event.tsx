@@ -45,16 +45,22 @@ export function Event({ id }: { id: string }) {
           </Center>
         ) : (
           <VStack w="100%" p={3}>
-            <Component title={event.event.title} canDelete={canDelete}>
-              <Gallery pictures={event.event.pictures} />
+            <Component title={event.event.title} canDelete={canDelete} id={id}>
+              <Gallery pictures={event.event.pictures ?? []} />
             </Component>
             <HStack w="100%">
               <Component title="Host">
-                <User email={event.event.organizer} />
+                <User
+                  email={
+                    event.event.organizer
+                      ? event.event.organizer
+                      : "hello@hello.com"
+                  }
+                />
               </Component>
               <Box h="100%" w="100%">
                 <Component title="Event Information">
-                  <Info date={event.event.date} />
+                  <Info date={event.event.date} type="swag" />
                 </Component>
               </Box>
             </HStack>
@@ -81,8 +87,8 @@ export function Event({ id }: { id: string }) {
       ) : (
         <>
           <VStack flexGrow={1} h="100%">
-            <Component title={event.event.title} canDelete={canDelete}>
-              <Gallery pictures={event.event.pictures} />
+            <Component title={event.event.title} canDelete={canDelete} id={id}>
+              <Gallery pictures={event.event.pictures ?? []} />
             </Component>
             <Component title="Description">
               <Text>{event.event.description}</Text>
@@ -90,10 +96,16 @@ export function Event({ id }: { id: string }) {
           </VStack>
           <VStack h="100%" minW="332px" maxW="332px">
             <Component title="Host">
-              <User email={event.event.organizer} />
+              <User
+                email={
+                  event.event.organizer
+                    ? event.event.organizer
+                    : "hello@hello.com"
+                }
+              />
             </Component>
             <Component title="Event Information">
-              <Info date={event.event.date} type={event.event.type} />
+              <Info date={event.event.date} type={event.event.type ?? "swag"} />
             </Component>
             {event.event.lng && event.event.lat && (
               <Component title="Map">

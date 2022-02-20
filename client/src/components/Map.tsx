@@ -16,15 +16,15 @@ const render = (status: Status) => {
 };
 
 type Props = {
-  lat: number;
-  lng: number;
+  lat: any;
+  lng: any;
 };
 
 export const GoogleMap = ({ lat, lng }: Props) => {
   const [zoom, setZoom] = useState(15);
   const [center, setCenter] = useState<google.maps.LatLngLiteral>({
-    lat,
-    lng,
+    lat: Number(lat.$numberDecimal),
+    lng: Number(lng.$numberDecimal),
   });
 
   const onIdle = (m: google.maps.Map) => {
@@ -46,8 +46,8 @@ export const GoogleMap = ({ lat, lng }: Props) => {
         >
           <Marker
             position={{
-              lat,
-              lng,
+              lat: Number(lat.$numberDecimal),
+              lng: Number(lng.$numberDecimal),
             }}
           />
         </Map>
@@ -57,7 +57,6 @@ export const GoogleMap = ({ lat, lng }: Props) => {
 };
 interface MapProps extends google.maps.MapOptions {
   style: { [key: string]: string };
-  onClick?: (e: google.maps.MapMouseEvent) => void;
   onIdle?: (map: google.maps.Map) => void;
 }
 

@@ -14,7 +14,7 @@ import {
 import { useState } from "react";
 import { MdOutlineDateRange, MdAccessTime } from "react-icons/md";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -26,10 +26,15 @@ type Props = {
 export function PostIt({ title, date, tags, id }: Props) {
   const [show, setShow] = useState(true);
   const navigate = useNavigate();
+  const serviceMatch = useMatch("/services/*");
 
   const handleToggle = () => setShow(!show);
   const handleClick = () => {
-    navigate(`/events/${id}`);
+    if (serviceMatch) {
+      navigate(`/services/${id}`);
+    } else {
+      navigate(`/events/${id}`);
+    }
     // window.location.reload();
   };
   return (

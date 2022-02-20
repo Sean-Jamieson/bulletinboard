@@ -1,18 +1,6 @@
 import { useEffect, useState } from "react";
 import { getData } from "../api/asyncFunctions";
-
-// Event data type
-export type UserEvent = {
-  organizer: string;
-  description: string;
-  title: string;
-  type: string;
-  lat: number;
-  lng: number;
-  date: string;
-  rating: number;
-  pictures: string[];
-};
+import { UserEvent } from "./useGetEvents";
 
 type Result = { status: "loaded"; event: UserEvent } | { status: "loading" };
 

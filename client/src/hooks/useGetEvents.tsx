@@ -3,15 +3,15 @@ import { getData } from "../api/asyncFunctions";
 
 // Event data type
 export type UserEvent = {
-  _id: string;
+  _id?: string;
   organizer: string;
   description: string;
   title: string;
-  type: string;
+  type?: string;
   lat: number;
   lng: number;
   date: string;
-  rating: number;
+  rating?: number;
   pictures: string[];
 };
 

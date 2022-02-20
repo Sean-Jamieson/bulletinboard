@@ -1,24 +1,10 @@
 import { useEffect, useState } from "react";
 import { getData } from "../api/asyncFunctions";
+import { UserEvent } from "./useGetEvents";
 
-// Event data type
-export type UserService = {
-  organizer: string;
-  description: string;
-  title: string;
-  type: string;
-  lat: number;
-  lng: number;
-  date: string;
-  rating: number;
-  pictures: string[];
-};
+type Result = { status: "loaded"; service: UserEvent } | { status: "loading" };
 
-type Result =
-  | { status: "loaded"; service: UserService }
-  | { status: "loading" };
-
-export function useGetEvent(id: string): Result {
+export function useGetService(id: string): Result {
   const [result, setResult] = useState<Result>({ status: "loading" });
 
   useEffect(() => {

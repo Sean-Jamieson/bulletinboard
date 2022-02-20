@@ -17,6 +17,8 @@ export function Gallery({ pictures }: Props) {
   const [selected, setSelected] = useState(0);
   const [isMobile] = useMediaQuery("(max-width: 1300px)");
 
+  pictures = pictures.filter((picture) => picture.length !== 0);
+
   const handleLeft = useCallback(() => {
     if (selected - 1 === -1) {
       setSelected(pictures.length - 1);
