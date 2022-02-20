@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const serviceSchema = mongoose.Schema({
     title: String,
-    organizer: String
+    organizer: String,
     description: String,
     type: String,
     lat: mongoose.Schema.Types.Decimal128,
