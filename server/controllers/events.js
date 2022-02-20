@@ -26,9 +26,8 @@ const createEvent = async (req, res) => {
     const newEvent = new EventMessage(event);
     try{
         await newEvent.save();
-
         res.status(201).json(newEvent);
-    } catch {
+    } catch (error) {
         res.status(409).json({message: error.message});
     }
 };
@@ -42,7 +41,6 @@ const updateEvent = async (req, res) => {
     }
     
     const updateEvent = await EventMessage.findByIdAndUpdate(_id, {...event, _id}, {new: event});
-   
     res.json(updateEvent);
 };
 

@@ -2,35 +2,22 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
-const { auth, requiresAuth } = require('express-openid-connect');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+app.use(bodyParser.json({limit: "30mb", extended: true}));
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+
 
 app.use(cors());
-
-app.use(
-    auth({
-        authRequired: false,
-        auth0Logout: true,
-        issuerBaseURL: process.env.ISSUER_BASE_URL,
-        baseURL: process.env.BASE_URL,
-        clientID: process.env.CLIENT_ID,
-        secret: process.env.SECRET,
-    })
-);
 
 app.use('/api/events', require('./routes/events'));
 app.use('/api/services', require('./routes/services'));
 
 app.get('/', (req, res) => {
-    res.send(req.oidc.isAuthenticated() ? "Logged in." : "Logged out.")
-});
-
-app.get('/profile', requiresAuth(), (req,res) => {
-    res.send(JSON.stringify(req.oidc.user));
+    res.json({message: "bltnbrd api. please visit bltnbrd.online/ for more information."});
 });
 
 const PORT = process.env.PORT || 3000;
