@@ -5,7 +5,7 @@ const EventMessage = require('../models/eventMessage.js');
 const getEvent = async (req, res) => {
     try{
         const id = req.params.id;
-        const eventMessage = await EventMessage.find(id);
+        const eventMessage = await EventMessage.findById(id);
         res.status(200).json(eventMessage);
     } catch (error) {
         res.status(404).json({message:error.message});
