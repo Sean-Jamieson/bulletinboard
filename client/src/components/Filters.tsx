@@ -18,7 +18,7 @@ export function Filters() {
   const handleToggle = () => setShow(!show);
 
   return (
-    <Box w="100%" bgColor="background" top="0" m="0" boxShadow="md" zIndex={10}>
+    <Box w="100%" bgColor="filters" top="0" m="0" boxShadow="md" zIndex={10}>
       <HStack w="100%" justifyContent="space-between" p={3}>
         <Text color="white" fontSize="19px">
           Filters

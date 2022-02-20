@@ -7,9 +7,16 @@ import {
   Image,
   Select,
 } from "@chakra-ui/react";
+import { useMatch, useNavigate, useParams } from "react-router-dom";
 
 export function Header() {
-  console.log(process.env);
+  const navigate = useNavigate();
+  const { region, slug } = useParams();
+
+  const eventsMatch = useMatch("/events/*");
+  const servicesMatch = useMatch("/services/*");
+  const newPostingMatch = useMatch("/new/*");
+
   return (
     <Center
       w="100%"
@@ -24,19 +31,36 @@ export function Header() {
           src={"/images/bltnbrdlogo.png"}
           alt="Bulletin Board"
           maxH="45px"
-          minW="7em"
+          minH="45px"
+          minW="12em"
           color="transparent"
           loading="lazy"
-          mx="2"
+          ml="14"
         />
         <HStack pr={3} spacing={4}>
           <Select bgColor="whiteAlpha.700" placeholder="Victoria" />
           <ButtonGroup isAttached colorScheme="whiteAlpha">
-            <Button color="black" isActive>
+            <Button
+              color="black"
+              isActive={eventsMatch ? true : false}
+              onClick={() => navigate(`/events/${region}/${slug}`)}
+            >
               Events
             </Button>
-            <Button color="black">Services</Button>
-            <Button color="black">New posting</Button>
+            <Button
+              color="black"
+              isActive={servicesMatch ? true : false}
+              onClick={() => navigate(`/services/${region}/${slug}`)}
+            >
+              Services
+            </Button>
+            <Button
+              color="black"
+              isActive={newPostingMatch ? true : false}
+              onClick={() => navigate(`/new/${region}`)}
+            >
+              New posting
+            </Button>
           </ButtonGroup>
           <Avatar size="md" />
         </HStack>

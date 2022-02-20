@@ -1,10 +1,9 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import { PostIt } from "../components/PostIt";
-import { CenterPost } from "./CenterPost";
 
-export function Page() {
+export function Page({ children }: { children: JSX.Element }) {
   return (
     <Flex h="100vh" direction="column" overflow="hidden">
       <Header />
@@ -13,6 +12,7 @@ export function Page() {
           <>
             {Array.from({ length: 100 }, () => (
               <PostIt
+                // key={"s"}
                 title="what's up"
                 date="January 16th, 2020"
                 time="12:00AM-12:00PM"
@@ -21,7 +21,9 @@ export function Page() {
             ))}
           </>
         </Sidebar>
-        <CenterPost />
+        <Flex w="100%" overflowY="auto" h="100%">
+          {children}
+        </Flex>
       </Flex>
     </Flex>
   );

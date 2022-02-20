@@ -7,7 +7,7 @@ import { Info } from "../components/Info";
 import { GoogleMap } from "../components/Map";
 import User from "../components/User";
 
-export function CenterPost() {
+export function Service() {
   const [isMobile] = useMediaQuery("(max-width: 1300px)");
 
   const pictures = [

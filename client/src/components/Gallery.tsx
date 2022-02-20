@@ -1,10 +1,9 @@
 import {
-  Box,
   Center,
   HStack,
-  Icon,
   IconButton,
   Image,
+  useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import { useState, useEffect, useCallback } from "react";
@@ -16,6 +15,7 @@ type Props = {
 
 export function Gallery({ pictures }: Props) {
   const [selected, setSelected] = useState(0);
+  const [isMobile] = useMediaQuery("(max-width: 1300px)");
 
   const handleLeft = useCallback(() => {
     if (selected - 1 === -1) {
@@ -40,44 +40,50 @@ export function Gallery({ pictures }: Props) {
   }, [pictures, pictures.length, selected]);
 
   return (
-    <VStack w="100%">
-      <Center bgColor="black">
+    <VStack>
+      <Center w="100%" h="100%">
         <Image
-          maxW="1000px"
-          minW="1000px"
-          maxH="400px"
-          minH="400px"
+          maxW={{ base: "400px", xl: "600px", "2xl": "800px" }}
+          minW={{ base: "400px", xl: "600px", "2xl": "800px" }}
+          maxH={{ base: "200px", xl: "300px", "2xl": "400px" }}
+          minH={{ base: "200px", xl: "300px", "2xl": "400px" }}
           objectFit="scale-down"
           src={pictures[selected]}
         />
       </Center>
-      <HStack h="80px">
-        <IconButton
-          size="lg"
-          aria-label="left"
-          icon={<BiChevronLeft fontSize="25px" />}
-          onClick={handleLeft}
-        />
-        {pictures.map((picture, i) => (
-          <Center h="fit-content" border={selected === i ? "solid" : "none"}>
-            <Image
-              objectFit="scale-down"
-              maxW="100px"
-              _hover={{
-                border: selected !== i ? "solid" : "none",
-              }}
-              src={picture}
-              onClick={() => setSelected(i)}
-            />
-          </Center>
-        ))}
-        <IconButton
-          size="lg"
-          aria-label="right"
-          icon={<BiChevronRight fontSize="25px" />}
-          onClick={handleRight}
-        />
-      </HStack>
+      {
+        <HStack
+          h="fit-content"
+          w={isMobile ? "100%" : ""}
+          justifyContent={isMobile ? "center" : "normal"}
+        >
+          <IconButton
+            w={isMobile ? "50px" : ""}
+            size="lg"
+            aria-label="left"
+            icon={<BiChevronLeft fontSize="25px" />}
+            onClick={handleLeft}
+          />
+          {!isMobile &&
+            pictures.map((picture, i) => (
+              <Center key={i} h="fit-content">
+                <Image
+                  objectFit="scale-down"
+                  maxW="100px"
+                  src={picture}
+                  onClick={() => setSelected(i)}
+                />
+              </Center>
+            ))}
+          <IconButton
+            w={isMobile ? "50px" : ""}
+            size="lg"
+            aria-label="right"
+            icon={<BiChevronRight fontSize="25px" />}
+            onClick={handleRight}
+          />
+        </HStack>
+      }
     </VStack>
   );
 }
