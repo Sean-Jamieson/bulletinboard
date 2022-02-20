@@ -22,8 +22,7 @@ const getEvents = async (req, res) => {
 };
 
 const createEvent = async (req, res) => {
-    const event = req.body;
-    const newEvent = new EventMessage(event);
+    const newEvent = new EventMessage(req.body);
     try{
         await newEvent.save();
         res.status(201).json(newEvent);
