@@ -11,9 +11,11 @@ import {
 
 type Props = {
   textContent: string;
+  fontSize?: string;
+  textAlign?: "left";
 };
 
-export function Editable({ textContent }: Props) {
+export function Editable({ fontSize, textAlign, textContent }: Props) {
   function EditableControls() {
     const {
       isEditing,
@@ -48,9 +50,9 @@ export function Editable({ textContent }: Props) {
   }
   return (
     <ChakraEditable
-      textAlign="center"
+      textAlign={textAlign ?? "center"}
       defaultValue={textContent}
-      fontSize="2xl"
+      fontSize={fontSize ?? "2xl"}
       isPreviewFocusable={false}
     >
       <EditablePreview />

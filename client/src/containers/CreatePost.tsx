@@ -9,7 +9,15 @@ import {
   Button,
   Textarea,
   Center,
+  Box,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  Text,
 } from "@chakra-ui/react";
+import { DatePicker } from "@orange_digital/chakra-datepicker";
 
 import { FileUpload } from "../components/FileUpload";
 
@@ -19,7 +27,7 @@ export function CreatePost() {
       <Center w="100%">
         <HStack>
           <VStack h="fit-content" px="10">
-            <FormControl
+            <Box
               as="fieldset"
               border="2pt solid black"
               borderRadius="lg"
@@ -59,32 +67,46 @@ export function CreatePost() {
                 isRequired
                 placeholder="name your service/event"
                 focusBorderColor="inputHighlight"
-                border="2pt solid black"
+                // border="2pt solid black"
                 _hover={{ borderColor: "inputHighlight" }}
                 size="lg"
               />
               <FormLabel as="legend" mt="20px" ml="5px">
                 Add a date
               </FormLabel>
-              <Input
-                isRequired
-                placeholder="date"
-                focusBorderColor="inputHighlight"
-                border="2pt solid black"
-                _hover={{ borderColor: "inputHighlight" }}
-                size="lg"
-              />
+              <DatePicker initialValue={new Date()} />
               <FormLabel as="legend" mt="20px" ml="5px">
                 Add a time
               </FormLabel>
-              <Input
-                isRequired
-                placeholder="time"
-                focusBorderColor="inputHighlight"
-                border="2pt solid black"
-                _hover={{ borderColor: "inputHighlight" }}
-                size="lg"
-              />
+              <HStack>
+                <NumberInput
+                  size="lg"
+                  maxW="190px"
+                  max={23}
+                  defaultValue={0}
+                  min={0}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+                <Text fontSize="30px">:</Text>
+                <NumberInput
+                  size="lg"
+                  maxW="190px"
+                  max={59}
+                  defaultValue={0}
+                  min={0}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </HStack>
               <FormLabel as="legend" mt="20px" ml="5px">
                 Add a location
               </FormLabel>
@@ -92,7 +114,7 @@ export function CreatePost() {
                 isRequired
                 placeholder="location"
                 focusBorderColor="inputHighlight"
-                border="2pt solid black"
+                // border="2pt solid black"
                 _hover={{ borderColor: "inputHighlight" }}
                 size="lg"
               />
@@ -103,10 +125,11 @@ export function CreatePost() {
                 isRequired
                 placeholder="description"
                 focusBorderColor="inputHighlight"
-                border="2pt solid black"
+                // border="2pt solid black"
                 _hover={{ borderColor: "inputHighlight" }}
                 size="lg"
               />
+
               <Button
                 mt="25px"
                 w="100%"
@@ -117,7 +140,7 @@ export function CreatePost() {
               >
                 Create
               </Button>
-            </FormControl>
+            </Box>
           </VStack>
 
           <FormControl

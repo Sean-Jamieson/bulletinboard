@@ -28,7 +28,6 @@ export const GoogleMap = ({ lat, lng }: Props) => {
   });
 
   const onIdle = (m: google.maps.Map) => {
-    console.log("onIdle");
     setZoom(m.getZoom()!);
     setCenter(m.getCenter()!.toJSON());
   };
@@ -36,7 +35,7 @@ export const GoogleMap = ({ lat, lng }: Props) => {
   return (
     <Flex h="100%">
       <Wrapper
-        apiKey={"AIzaSyB8Fum3isQVWi_jPm2tu9DFsuO2xWLV4Rs"}
+        apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY ?? ""}
         render={render}
       >
         <Map

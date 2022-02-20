@@ -6,9 +6,9 @@ import {
 } from "react-icons/md";
 
 type Props = {
-  date: string;
-  time: string;
-  location: string;
+  date: string | JSX.Element;
+  time: string | JSX.Element;
+  location: string | JSX.Element;
 };
 
 export function Info({ date, time, location }: Props) {

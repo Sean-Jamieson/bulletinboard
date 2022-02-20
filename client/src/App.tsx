@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Page } from "./containers/Page";
-import { CenterPost } from "./containers/CenterPost";
+import { Event } from "./containers/Event";
 import { CreatePost } from "./containers/CreatePost";
 import { Service } from "./containers/Service";
 
@@ -12,7 +12,7 @@ export function App() {
           path="/"
           element={
             <Page>
-              <CenterPost />
+              <Event />
             </Page>
           }
         />
@@ -20,7 +20,7 @@ export function App() {
           path="/events/:region/:slug"
           element={
             <Page>
-              <CenterPost />
+              <Event />
             </Page>
           }
         />

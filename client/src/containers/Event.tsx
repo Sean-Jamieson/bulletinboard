@@ -7,8 +7,10 @@ import { Info } from "../components/Info";
 import { GoogleMap } from "../components/Map";
 import User from "../components/User";
 
-export function CenterPost() {
+export function Event() {
   const [isMobile] = useMediaQuery("(max-width: 1300px)");
+
+  const canDelete = true;
 
   const pictures = [
     "/images/bltnbrdlogo.png",
@@ -21,7 +23,7 @@ export function CenterPost() {
   if (isMobile) {
     return (
       <VStack w="100%" p={3}>
-        <Component title="My Really Awesome BBQ">
+        <Component title="My Really Awesome BBQ" canDelete={canDelete}>
           <Gallery pictures={pictures} />
         </Component>
         <HStack w="100%">
@@ -74,7 +76,7 @@ export function CenterPost() {
   return (
     <HStack w="100%" p={3} marginX={{ base: 0, "2xl": 20 }}>
       <VStack flexGrow={1} h="100%">
-        <Component title="My Really Awesome BBQ">
+        <Component title="My Really Awesome BBQ" canDelete={canDelete}>
           <Gallery pictures={pictures} />
         </Component>
         <Component title="Description">
