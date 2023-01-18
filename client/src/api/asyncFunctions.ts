@@ -1,6 +1,6 @@
 import { CreateInput } from "../hooks/useCreateService";
 
-const API_URL = "https://bltnbrd.herokuapp.com/api/";
+const API_URL = "https://pewter-thoracic-cushion.glitch.me/";
 
 /* postData(url, data)
  *
