@@ -1,6 +1,6 @@
 import { CreateInput } from "../hooks/useCreateService";
 
-const API_URL = "https://pewter-thoracic-cushion.glitch.me/";
+const API_URL = "https://pewter-thoracic-cushion.glitch.me/api/";
 
 /* postData(url, data)
  *
